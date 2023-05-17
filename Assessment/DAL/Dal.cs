@@ -16,6 +16,7 @@ namespace DAL
             return 0;
         }
 
+
         public Role GetRole(String rolename)
         {
             return (db.Roles.FirstOrDefault( x => x.UserName == rolename ));
@@ -23,7 +24,7 @@ namespace DAL
 
         public User GetUser(String username)
         {
-            return db.Users.FirstOrDefault( x => x.UserName == username );  
+            return db.Users.FirstOrDefault( x => x.Name == username );  
         }
 
         public int AddProduct(Product product)

@@ -166,6 +166,7 @@ namespace PresentationLayer
                     Console.WriteLine("IsActive:: ");
                     bool isactive = true;
 
+
                     string username = "Supplier";
 
                     Role role = bal.GetRole(username);
@@ -198,8 +199,6 @@ namespace PresentationLayer
                     Console.WriteLine("IsActive:: ");
                     bool isactive1 = true;
                     string username1 = "Customer";
-
-
 
                     User user1 = new User()
                     {
