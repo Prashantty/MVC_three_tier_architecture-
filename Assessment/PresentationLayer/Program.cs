@@ -45,10 +45,7 @@ namespace PresentationLayer
         {
             int ch;
 
-            try
-            {
-                while (true)
-                {
+           
                     Console.WriteLine("Enter the chioce");
                     Console.WriteLine("1 . Add users");
                     Console.WriteLine("2 . Delete Users");
@@ -70,10 +67,7 @@ namespace PresentationLayer
                     }
 
                 }
-            }
-            catch (Exception ex) { Console.WriteLine(ex.Message); Console.WriteLine("Enter the valid input !!!"); }
-
-        }
+          
 
         public void Addusers()
         {
@@ -114,6 +108,10 @@ namespace PresentationLayer
                     {
                         Console.WriteLine("Record Added");
                     }
+                    else
+                    {
+                        Console.WriteLine("Some Error Occured !!!");
+                    }
 
                     break;
                 case 2:
@@ -127,18 +125,25 @@ namespace PresentationLayer
                     Console.WriteLine("IsActive:: ");
                     bool isactive1 = true;
                     string username1 = "Customer";
-
-
+                    Role role1 = bal1.GetRole(username1);
 
                     User user1 = new User()
                     {
                         Name = name1,
                         DateCreated = createdate1,
-                        IsActive = isactive1
+                        IsActive = isactive1,
+                        Role = role1
                     };
 
-                    Role role1 = bal1.GetRole(username1);
+                    
                     int resp1 = bal1.addUser(user1);
+                    if(resp1 == 0)
+                    {
+                        Console.WriteLine("Customer Added !!!");
+                    }
+                    else{
+                        Console.WriteLine("Some Error Occoured !!");
+                    }
 
                     break;
                 default:

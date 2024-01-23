@@ -103,7 +103,12 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Roleid")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Roleid");
 
                     b.ToTable("Users");
                 });
@@ -128,6 +133,17 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("user");
+                });
+
+            modelBuilder.Entity("BusinessObject.Model.User", b =>
+                {
+                    b.HasOne("BusinessObject.Model.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("Roleid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }
