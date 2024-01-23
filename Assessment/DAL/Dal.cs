@@ -16,9 +16,22 @@ namespace DAL
             return 0;
         }
 
-        public Role GetRole(string rolename)
+
+        public Role GetRole(String rolename)
         {
             return (db.Roles.FirstOrDefault( x => x.UserName == rolename ));
+        }
+
+        public User GetUser(String username)
+        {
+            return db.Users.FirstOrDefault( x => x.Name == username );  
+        }
+
+        public int AddProduct(Product product)
+        {
+            db.Products.Add(product);
+            db.SaveChanges();
+            return 0;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BAL;
 using BusinessObject.Model;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Json;
 
 namespace PresentationLayer
 {
@@ -27,7 +28,7 @@ namespace PresentationLayer
                     break;
                 case 2:
 
-                    // program.SupplierWorks();
+                    program.SupplierWorks();
                     break;
                 case 3:
 
@@ -40,6 +41,76 @@ namespace PresentationLayer
 
 
         }
+
+        public void SupplierWorks()
+        {
+            int ch;
+            Bal bal = new Bal();
+            try
+            {
+                while(true)
+                {
+                    Console.WriteLine("Enter the Choice !!");
+                    Console.WriteLine("1 . Add Product");
+                    Console.WriteLine("2 . Edit Product");
+                    Console.WriteLine("3 . Update Produt");
+                    ch = int.Parse(Console.WriteLine());
+
+                    switch(ch)
+                    {
+                        case 1:
+
+                            Console.WriteLine("--Adding Product--");
+                            Console.WriteL("Enter the Product Name ::");
+                            string Pname = Console.ReadLine();  
+                            Console.Write("Enter the Price ::");
+                            int price = int.Parse(Console.ReadLine());  
+                            Console.Write("Enter the User Name Who is Adding  :::");
+                            string username = Console.ReadLine();
+
+                            User user = bal.GetUser(username);
+
+                            Product product = new Product()
+                            {
+                                ProductName = Pname,
+                                Price = price,  
+                                user = user
+
+                            };
+
+                            int respone = bal.AddProduct(product);
+                            if(respone == 0)
+                            {
+                                Console.WriteLine("Product Addded");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Some Error");
+                            }
+
+
+                            break;
+                        case 2:
+
+                            Console.WriteLine("--Edit Product --");
+
+                            break;
+                        case 3:
+
+                            Console.WriteLine("--Delete Product--");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Input !!!");
+                            break;
+
+                    }
+
+
+                }
+            }catch (Exception ex) { Console.WriteLine(ex.ToString()); Console.WriteLine("Invalid options please chhoose !!!"); }
+
+        }
+
 
         public void AdminWorks()
         {
@@ -89,6 +160,7 @@ namespace PresentationLayer
                     Console.WriteLine("IsActive:: ");
                     bool isactive = true;
 
+
                     string username = "Supplier";
 
                     Role role = bal.GetRole(username);
@@ -125,7 +197,10 @@ namespace PresentationLayer
                     Console.WriteLine("IsActive:: ");
                     bool isactive1 = true;
                     string username1 = "Customer";
+<<<<<<< HEAD
                     Role role1 = bal1.GetRole(username1);
+=======
+>>>>>>> 78b2d1bf4fa0cc13c23be557613c374b92ae01bc
 
                     User user1 = new User()
                     {
